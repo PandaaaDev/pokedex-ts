@@ -36,6 +36,9 @@ export type PokeApiResponse = {
 	count?: number;
 };
 export type TPagination = {
+	nextLink: URLType;
+	prevLink: URLType;
+	reset: boolean;
 	handleNext: () => void;
 	handlePrev: () => void;
 	handleReset?: () => void;

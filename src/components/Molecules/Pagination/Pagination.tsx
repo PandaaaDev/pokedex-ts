@@ -5,12 +5,15 @@ const Pagination: React.FC<TPagination> = ({
 	handleNext,
 	handlePrev,
 	handleReset,
+	nextLink,
+	prevLink,
+	reset,
 }) => {
 	return (
 		<>
-			<PrimaryButton onClick={handleNext}>Next</PrimaryButton>
-			<PrimaryButton onClick={handlePrev}>Previous</PrimaryButton>
-			{handleReset && (
+			{prevLink && <PrimaryButton onClick={handlePrev}>Previous</PrimaryButton>}
+			{nextLink && <PrimaryButton onClick={handleNext}>Next</PrimaryButton>}
+			{reset && handleReset && (
 				<PrimaryButton onClick={handleReset}>Reset</PrimaryButton>
 			)}
 		</>

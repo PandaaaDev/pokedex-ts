@@ -1,27 +1,29 @@
-import { useState, useEffect } from 'react';
-import { PokemonArray, PokemonType, URLType } from '@/types/main';
+import { useState } from 'react';
+import { PokemonType, URLType } from '@/types/main';
 import useFetch from '@/hooks/useFetch';
 import Pokemon from '@/components/Molecules/Pokemon/Pokemon';
 import Pagination from '@/components/Molecules/Pagination/Pagination';
+import { styled } from 'styled-components';
+
+const StyledPokemonList = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	flex-wrap: wrap;
+`;
 const PokemonList = () => {
 	const [currentUrl, setCurrentUrl] = useState<URLType>(
 		'https://pokeapi.co/api/v2/pokemon'
 	);
-	const [nextUrl, setNextUrl] = useState<URLType>(null);
-	const [prevUrl, setPrevUrl] = useState<URLType>(null);
-	const { response, loading, error } = useFetch(currentUrl);
-	const [data, setData] = useState<PokemonArray>([]);
+	const { data, loading, error, next, prev } = useFetch(currentUrl);
+	console.log(data);
 
-	useEffect(() => {
-		setData(response?.data.results);
-		setNextUrl(response?.data.next);
-		setPrevUrl(response?.data.previous);
-	}, [response?.data]);
 	const handlePrev = () => {
-		setCurrentUrl(prevUrl);
+		setCurrentUrl(prev);
 	};
 	const handleNext = () => {
-		setCurrentUrl(nextUrl);
+		setCurrentUrl(next);
 	};
 	const handleReset = () => {
 		setCurrentUrl('https://pokeapi.co/api/v2/pokemon');
@@ -33,12 +35,20 @@ const PokemonList = () => {
 
 	return (
 		<div>
+			<Pagination
+				nextLink={next}
+				prevLink={prev}
+				reset={prev ? true : false}
+				handleNext={handleNext}
+				handlePrev={handlePrev}
+				handleReset={handleReset}
+			/>
 			{loading ? (
-				<>Loading... </>
+				<div>Loading... </div>
 			) : (
-				<div>
+				<StyledPokemonList>
 					{data &&
-						data.map((element: PokemonType) => {
+						data.results.map((element: PokemonType) => {
 							return (
 								<Pokemon
 									key={element.name}
@@ -47,14 +57,8 @@ const PokemonList = () => {
 								/>
 							);
 						})}
-				</div>
+				</StyledPokemonList>
 			)}
-
-			<Pagination
-				handleNext={handleNext}
-				handlePrev={handlePrev}
-				handleReset={handleReset}
-			/>
 		</div>
 	);
 };
