@@ -27,3 +27,11 @@ export type Sprites = {
 
 export type URLType = string | null | undefined | URL;
 export type PokemonArray = PokemonType[];
+export type Response = PokeApiResponse | BasicRespone;
+export type BasicRespone = { message: string; status: number };
+export type PokeApiResponse = {
+	results: PokemonArray;
+	next?: string | null;
+	previous?: string | null;
+	count?: number;
+};
