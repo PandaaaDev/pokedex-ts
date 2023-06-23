@@ -29,7 +29,9 @@ const useFetch = (url: URLType) => {
 				setError(error);
 			})
 			.finally(() => {
-				setLoading(false);
+				setTimeout(() => {
+					setLoading(false);
+				}, 1000);
 			});
 
 		return () => {

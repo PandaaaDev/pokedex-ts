@@ -1,6 +1,6 @@
 import React from 'react';
 import { TPagination } from '@/types/main';
-import PrimaryButton from '@/components/Atoms/Button/PrimaryButton';
+import PrimaryButton from '@/components/Atoms/PrimaryButton';
 const Pagination: React.FC<TPagination> = ({
 	handleNext,
 	handlePrev,

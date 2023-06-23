@@ -1,4 +1,4 @@
-import PokemonList from '@/components/Organism/PokemonList/PokemonList';
+import PokemonList from '@/components/Organism/PokemonList';
 const App = () => {
 	return (
 		<div>
