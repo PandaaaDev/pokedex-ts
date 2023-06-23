@@ -35,3 +35,8 @@ export type PokeApiResponse = {
 	previous?: string | null;
 	count?: number;
 };
+export type TPagination = {
+	handleNext: () => void;
+	handlePrev: () => void;
+	handleReset?: () => void;
+};
