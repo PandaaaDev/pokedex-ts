@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { URLType } from 'types/main';
-import axios from 'axios';
-
+import axios, { AxiosError, AxiosResponse } from 'axios';
 const useFetch = (url: URLType) => {
-	const [data, setData] = useState<any>();
-	const [error, setError] = useState<any>();
+	const [response, setResponse] = useState<AxiosResponse>();
+	const [error, setError] = useState<AxiosError>();
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		const controller = new AbortController();
@@ -13,13 +12,12 @@ const useFetch = (url: URLType) => {
 		axios
 			.get(url as string, { signal })
 			.then((res) => {
-				setData(res.data);
+				setResponse(res);
 				setLoading(false);
-				console.log(res);
 			})
 			.catch((error) => {
-				console.error(error);
 				if (error.code === 'ERR_CANCELED') return;
+				console.error(error);
 				setError(error);
 			});
 
@@ -27,6 +25,6 @@ const useFetch = (url: URLType) => {
 			controller.abort(reason);
 		};
 	}, [url]);
-	return { data, loading, error };
+	return { response, loading, error };
 };
 export default useFetch;
