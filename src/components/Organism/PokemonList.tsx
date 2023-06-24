@@ -34,8 +34,8 @@ const PokemonList = () => {
 	return (
 		<div>
 			<Pagination
-				nextLink={next}
-				prevLink={prev}
+				nextLink={next ? true : false}
+				prevLink={prev ? true : false}
 				reset={prev ? true : false}
 				handleNext={handleNext}
 				handlePrev={handlePrev}

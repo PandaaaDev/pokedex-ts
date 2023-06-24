@@ -1,4 +1,5 @@
 import PokemonList from '@/components/Organism/PokemonList';
+
 const App = () => {
 	return (
 		<div>

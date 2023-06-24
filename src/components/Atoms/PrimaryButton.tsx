@@ -1,6 +1,10 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-type PrimaryButtonType = ButtonHTMLAttributes<HTMLButtonElement>;
+interface PrimaryButtonType {
+	children: ReactNode;
+	active: boolean;
+	onClick?: () => void;
+}
 const StyledPrimaryButton = styled.button``;
 const PrimaryButton: React.FC<PrimaryButtonType> = (props) => {
 	return <StyledPrimaryButton {...props}>{props.children}</StyledPrimaryButton>;

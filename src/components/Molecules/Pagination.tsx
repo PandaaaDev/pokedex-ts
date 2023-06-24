@@ -1,6 +1,7 @@
 import React from 'react';
 import { TPagination } from '@/types/main';
 import PrimaryButton from '@/components/Atoms/PrimaryButton';
+import Container from '@/components/Atoms/Container';
 const Pagination: React.FC<TPagination> = ({
 	handleNext,
 	handlePrev,
@@ -10,13 +11,17 @@ const Pagination: React.FC<TPagination> = ({
 	reset,
 }) => {
 	return (
-		<>
-			{prevLink && <PrimaryButton onClick={handlePrev}>Previous</PrimaryButton>}
-			{nextLink && <PrimaryButton onClick={handleNext}>Next</PrimaryButton>}
-			{reset && handleReset && (
-				<PrimaryButton onClick={handleReset}>Reset</PrimaryButton>
-			)}
-		</>
+		<Container>
+			<PrimaryButton active={prevLink} onClick={handlePrev}>
+				Previous
+			</PrimaryButton>
+			<PrimaryButton active={nextLink} onClick={handleNext}>
+				Next
+			</PrimaryButton>
+			<PrimaryButton active={reset} onClick={handleReset}>
+				Reset
+			</PrimaryButton>
+		</Container>
 	);
 };
 
