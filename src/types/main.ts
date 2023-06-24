@@ -43,3 +43,7 @@ export type TPagination = {
 	handlePrev: () => void;
 	handleReset?: () => void;
 };
+
+export type themeType = {
+	darkTheme: boolean;
+};

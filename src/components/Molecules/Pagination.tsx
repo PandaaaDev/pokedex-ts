@@ -2,6 +2,7 @@ import React from 'react';
 import { TPagination } from '@/types/main';
 import PrimaryButton from '@/components/Atoms/PrimaryButton';
 import Container from '@/components/Atoms/Container';
+import { useSelector } from 'react-redux';
 const Pagination: React.FC<TPagination> = ({
 	handleNext,
 	handlePrev,
@@ -10,15 +11,16 @@ const Pagination: React.FC<TPagination> = ({
 	prevLink,
 	reset,
 }) => {
+	const theme = useSelector((state) => state.theme.darkTheme);
 	return (
 		<Container>
-			<PrimaryButton active={prevLink} onClick={handlePrev}>
+			<PrimaryButton $darktheme={theme} $active={prevLink} onClick={handlePrev}>
 				Previous
 			</PrimaryButton>
-			<PrimaryButton active={nextLink} onClick={handleNext}>
+			<PrimaryButton $darktheme={theme} $active={nextLink} onClick={handleNext}>
 				Next
 			</PrimaryButton>
-			<PrimaryButton active={reset} onClick={handleReset}>
+			<PrimaryButton $darktheme={theme} $active={reset} onClick={handleReset}>
 				Reset
 			</PrimaryButton>
 		</Container>
