@@ -7,7 +7,7 @@ import PokemonList from '@/components/Organism/PokemonList';
 
 const App = () => {
 	const dispatch = useDispatch();
-	const theme = useSelector((state: RootState) => state?.theme?.darkTheme);
+	const theme = useSelector((state: RootState) => state?.theme?.$darkTheme);
 	useEffect(() => {
 		if (
 			window.matchMedia &&

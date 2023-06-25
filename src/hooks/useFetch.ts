@@ -5,7 +5,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 const useFetch = (url: URLType) => {
 	const [response, setResponse] = useState<AxiosResponse>();
 	const [status, setStatus] = useState<number>();
-	const [data, setData] = useState<any>();
+	const [data, setData] = useState<unknown>();
 	const [error, setError] = useState<AxiosError>();
 	const [loading, setLoading] = useState(true);
 	const [next, setNext] = useState<URLType>(null);
