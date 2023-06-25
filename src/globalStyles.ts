@@ -2,11 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const darkTheme = {
 	color: '#fff',
+	textColor: '',
 	backgroundColor: '#010214',
+	secondaryColor: 'grey',
 };
 const lightTheme = {
 	color: '#010214',
+	textColor: '',
 	backgroundColor: '#fff',
+	secondaryColor: 'grey',
 };
 
 const GlobalStyle: React.FC<any> = createGlobalStyle`

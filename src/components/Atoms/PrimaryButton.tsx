@@ -20,11 +20,17 @@ const StyledPrimaryButton = styled.button<PrimaryButtonType>`
 			: 'grey'};
 	border: 2px solid
 		${(props) => (props.$darktheme ? darkTheme.color : lightTheme.color)};
+	border-radius: 20px;
 	cursor: pointer;
 	transition: 0.3s;
 	&:hover {
-		color: gray;
-		border: 2px solid grey;
+		color: ${(props) =>
+			props.$darktheme ? darkTheme.secondaryColor : lightTheme.secondaryColor};
+		border: 2px solid
+			${(props) =>
+				props.$darktheme
+					? darkTheme.secondaryColor
+					: lightTheme.secondaryColor};
 	}
 `;
 
