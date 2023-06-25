@@ -2,15 +2,16 @@ import { PokemonType } from '@/types/main';
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 const StyledPokemon = styled.div`
-	min-width: 100px;
-	max-width: 300px;
-	min-height: 100px;
-	max-height: 300px;
+	width: 100%;
+	height: 350px;
+	max-width: 350px;
 	background-color: #333;
 	color: white;
+	border: 1px solid red;
+	border-radius: 25px;
 	img {
-		max-width: 50px;
-		max-height: 50px;
+		width: 50%;
+		height: 50%;
 	}
 `;
 const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
@@ -25,7 +26,6 @@ const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
 			) : (
 				data && (
 					<StyledPokemon>
-						<div>{name}</div>
 						<div>ID:{data?.id}</div>
 						<div>
 							<img
@@ -33,6 +33,7 @@ const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
 								alt={`Image of ${name}`}
 							></img>
 						</div>
+						<div>{name}</div>
 					</StyledPokemon>
 				)
 			)}

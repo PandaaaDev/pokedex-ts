@@ -36,10 +36,17 @@ export type PokeApiResponse = {
 	count?: number;
 };
 export type TPagination = {
-	nextLink: URLType;
-	prevLink: URLType;
+	nextLink: boolean;
+	prevLink: boolean;
 	reset: boolean;
 	handleNext: () => void;
 	handlePrev: () => void;
 	handleReset?: () => void;
+};
+
+export type themeType = {
+	$darkTheme: boolean;
+};
+export type selectorType = {
+	theme: themeType;
 };

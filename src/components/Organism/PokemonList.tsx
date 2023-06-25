@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { PokemonType, URLType } from '@/types/main';
 import useFetch from '@/hooks/useFetch';
-import Pokemon from '@/components/Molecules/Pokemon/Pokemon';
-import Pagination from '@/components/Molecules/Pagination/Pagination';
+import Pokemon from '@/components/Molecules/Pokemon';
+import Pagination from '@/components/Molecules/Pagination';
 import { styled } from 'styled-components';
 
 const StyledPokemonList = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 15px;
+	gap: 10px;
 	flex-wrap: wrap;
 `;
 const PokemonList = () => {
@@ -17,8 +17,6 @@ const PokemonList = () => {
 		'https://pokeapi.co/api/v2/pokemon'
 	);
 	const { data, loading, error, next, prev } = useFetch(currentUrl);
-	console.log(data);
-
 	const handlePrev = () => {
 		setCurrentUrl(prev);
 	};
@@ -36,8 +34,8 @@ const PokemonList = () => {
 	return (
 		<div>
 			<Pagination
-				nextLink={next}
-				prevLink={prev}
+				nextLink={next ? true : false}
+				prevLink={prev ? true : false}
 				reset={prev ? true : false}
 				handleNext={handleNext}
 				handlePrev={handlePrev}
