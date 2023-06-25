@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { themeType } from '@/types/main';
 const initialState: themeType = {
-	darkTheme: true,
+	$darkTheme: true,
 };
 const themeSlice = createSlice({
 	name: 'theme',
 	initialState,
 	reducers: {
 		toggle(state) {
-			state.darkTheme = !state.darkTheme;
+			state.$darkTheme = !state.$darkTheme;
 		},
 		dark(state) {
-			state.darkTheme = true;
+			state.$darkTheme = true;
 		},
 		light(state) {
-			state.darkTheme = false;
+			state.$darkTheme = false;
 		},
 	},
 });
