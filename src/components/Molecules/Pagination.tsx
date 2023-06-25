@@ -12,7 +12,7 @@ const Pagination: React.FC<TPagination> = ({
 	prevLink,
 	reset,
 }) => {
-	const theme = useSelector((state: selectorType) => state.theme.darkTheme);
+	const theme = useSelector((state: selectorType) => state.theme.$darkTheme);
 	return (
 		<Container>
 			<PrimaryButton $darktheme={theme} $active={prevLink} onClick={handlePrev}>
