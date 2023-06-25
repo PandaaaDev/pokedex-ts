@@ -45,7 +45,7 @@ export type TPagination = {
 };
 
 export type themeType = {
-	darkTheme: boolean;
+	$darkTheme: boolean;
 };
 export type selectorType = {
 	theme: themeType;
