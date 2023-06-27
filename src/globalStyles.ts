@@ -17,7 +17,7 @@ const lightTheme = {
 	secondaryColor: 'grey',
 };
 
-const GlobalStyle: React.FC<any> = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 *,*::after,*::before{
  margin: 0;
 padding: 0;
