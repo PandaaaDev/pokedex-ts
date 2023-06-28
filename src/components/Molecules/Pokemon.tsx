@@ -1,6 +1,8 @@
 import { PokemonType } from '@/types/main';
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { post } from '@/store/pokemonReducer';
 const StyledPokemon = styled.div`
 	display: flex;
 	align-items: center;
@@ -17,10 +19,14 @@ const StyledPokemon = styled.div`
 		width: 100px;
 		height: 100px;
 	}
+	cursor: pointer;
 `;
 const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
+	const dispatch = useDispatch();
 	const { data, loading, error } = useFetch(url);
-	console.log(data);
+	const handleOnClick = () => {
+		dispatch(post({ showPokemon: true, pokemon: data }));
+	};
 	if (error) {
 		<div>An error occurred sorry!</div>;
 	}
@@ -30,7 +36,7 @@ const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
 				<StyledPokemon>Loading...</StyledPokemon>
 			) : (
 				data && (
-					<StyledPokemon>
+					<StyledPokemon onClick={handleOnClick}>
 						<div>ID:{data?.id}</div>
 						<div>
 							<img
@@ -42,7 +48,7 @@ const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
 							<p>Type:</p>
 							{data.types.map(
 								(e: { slot: number; type: { name: string; url: string } }) => {
-									return <p>{e.type.name}</p>;
+									return <p key={e.type.url}>{e.type.name}</p>;
 								}
 							)}
 						</div>

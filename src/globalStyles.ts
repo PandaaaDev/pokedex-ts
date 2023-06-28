@@ -24,8 +24,12 @@ padding: 0;
 box-sizing: border-box;
 }
 body{
+	color: ${(props: themeProps) =>
+		props?.$darktheme.$darkTheme ? darkTheme.color : lightTheme.color};
 	background-color: ${(props: themeProps) =>
-		props?.$darktheme ? darkTheme.backgroundColor : lightTheme.backgroundColor};
+		props?.$darktheme.$darkTheme
+			? darkTheme.backgroundColor
+			: lightTheme.backgroundColor};
 }
 `;
 export { darkTheme, lightTheme };

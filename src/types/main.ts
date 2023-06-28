@@ -50,3 +50,6 @@ export type themeType = {
 export type selectorType = {
 	theme: themeType;
 };
+export interface SyntheticEvent<T> {
+    currentTarget: EventTarget & T;
+}
