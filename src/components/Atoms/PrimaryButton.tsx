@@ -21,6 +21,7 @@ const StyledPrimaryButton = styled.button<PrimaryButtonType>`
 	border: 2px solid
 		${(props) => (props.$darktheme ? darkTheme.color : lightTheme.color)};
 	border-radius: 20px;
+	opacity: ${(props) => (props.$active ? 1 : 0)};
 	cursor: pointer;
 	transition: 0.3s;
 	&:hover {

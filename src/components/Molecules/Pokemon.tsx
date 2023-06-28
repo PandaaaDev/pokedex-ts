@@ -3,12 +3,13 @@ import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { post } from '@/store/pokemonReducer';
+
 const StyledPokemon = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 100%;
+	width: 270px;
 	height: 350px;
 	max-width: 350px;
 	background-color: #333;
@@ -21,6 +22,7 @@ const StyledPokemon = styled.div`
 	}
 	cursor: pointer;
 `;
+
 const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
 	const dispatch = useDispatch();
 	const { data, loading, error } = useFetch(url);
