@@ -1,3 +1,4 @@
+import { ReactNode, ButtonHTMLAttributes } from 'react';
 export type PokemonType = {
 	name: string;
 	url?: string;
@@ -51,5 +52,8 @@ export type selectorType = {
 	theme: themeType;
 };
 export interface SyntheticEvent<T> {
-    currentTarget: EventTarget & T;
+	currentTarget: EventTarget & T;
+}
+export interface Button extends ButtonHTMLAttributes<HTMLButtonElement> {
+	children: ReactNode;
 }

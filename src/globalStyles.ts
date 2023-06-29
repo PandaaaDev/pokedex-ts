@@ -7,14 +7,18 @@ type themeProps = {
 const darkTheme = {
 	color: '#fff',
 	textColor: '',
-	backgroundColor: '#010214',
+	backgroundColor: '#37434f',
 	secondaryColor: 'grey',
+	mainAccentColor: '#d25044',
+	SecondaryAccentColor: '	#2c4c64',
 };
 const lightTheme = {
 	color: '#010214',
 	textColor: '',
-	backgroundColor: '#fff',
+	backgroundColor: '#e3e8ec',
 	secondaryColor: 'grey',
+	mainAccentColor: '#d25044',
+	SecondaryAccentColor: '	#2c4c64',
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -23,6 +27,9 @@ const GlobalStyle = createGlobalStyle`
 padding: 0;
 box-sizing: border-box;
 }
+html{
+	font-size: 62.5%;
+}
 body{
 	color: ${(props: themeProps) =>
 		props?.$darktheme.$darkTheme ? darkTheme.color : lightTheme.color};
@@ -30,6 +37,7 @@ body{
 		props?.$darktheme.$darkTheme
 			? darkTheme.backgroundColor
 			: lightTheme.backgroundColor};
+		font-family: 'Ubuntu Mono', monospace;
 }
 `;
 export { darkTheme, lightTheme };

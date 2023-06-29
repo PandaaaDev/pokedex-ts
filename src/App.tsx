@@ -7,11 +7,10 @@ import GlobalStyle from './globalStyles';
 import PokemonList from '@/components/Organism/PokemonList';
 import PokemonModal from './components/Molecules/PokemonModal';
 import { PokemonType } from './types/main';
+import Navigation from './components/Organism/Navigation';
 
 const App = () => {
 	const root = document.getElementById('modal') as HTMLElement;
-	console.log(root);
-
 	const dispatch = useDispatch();
 	const theme = useSelector((state: RootState) => state.theme.$darkTheme);
 	const pokemon = useSelector((state: RootState) => {
@@ -33,6 +32,7 @@ const App = () => {
 
 	return (
 		<div>
+			<Navigation />
 			<GlobalStyle
 				$darktheme={{
 					$darkTheme: theme,
