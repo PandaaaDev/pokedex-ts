@@ -12,8 +12,9 @@ const StyledNavList = styled.ul<{ $active: boolean }>`
 	position: absolute;
 	display: flex;
 	flex-direction: column;
+	align-items: flex-end;
 	justify-content: center;
-	left: ${(props) => (props.$active ? '0px' : '-1000px')};
+	right: ${(props) => (props.$active ? '0px' : '-1000px')};
 	height: 100vh;
 	width: ${(props) => (props.$active ? '100%' : ' 0%')};
 	background-color: ${(props) => props.theme.backgroundColor};
@@ -21,6 +22,10 @@ const StyledNavList = styled.ul<{ $active: boolean }>`
 	/* right: -10000px; */
 	transition: 0.3s;
 	li {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		padding: 0 20px;
 		width: 100%;
 		margin: 10px;
 		font-size: 4rem;
