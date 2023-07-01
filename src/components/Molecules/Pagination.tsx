@@ -1,9 +1,23 @@
 import React from 'react';
 import { TPagination } from '@/types/main';
 import PrimaryButton from '@/components/Atoms/PrimaryButton';
-import Container from '@/components/Atoms/Container';
-import { useSelector } from 'react-redux';
-import { selectorType } from '@/types/main';
+import { styled } from 'styled-components';
+const Container = styled.div`
+	margin: 10px 0;
+	display: flex;
+	align-items: center;
+	@media only screen and (max-width: 1024px) {
+		align-items: center;
+		justify-content: center;
+		background-color: ${(props) => props.theme.backgroundColor};
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		margin: 0;
+		width: 100%;
+		border-top: 2px solid ${(props) => props.theme.mainAccentColor};
+	}
+`;
 const Pagination: React.FC<TPagination> = ({
 	handleNext,
 	handlePrev,
@@ -12,17 +26,16 @@ const Pagination: React.FC<TPagination> = ({
 	prevLink,
 	reset,
 }) => {
-	const theme = useSelector((state: selectorType) => state.theme.$darkTheme);
 	return (
 		<Container>
-			<PrimaryButton $darktheme={theme} $active={prevLink} onClick={handlePrev}>
-				Previous
+			<PrimaryButton $active={prevLink} onClick={handlePrev}>
+				<i className='fa-solid fa-chevron-left'></i>
 			</PrimaryButton>
-			<PrimaryButton $darktheme={theme} $active={nextLink} onClick={handleNext}>
-				Next
+			<PrimaryButton $active={nextLink} onClick={handleNext}>
+				<i className='fa-solid fa-chevron-right'></i>
 			</PrimaryButton>
-			<PrimaryButton $darktheme={theme} $active={reset} onClick={handleReset}>
-				Reset
+			<PrimaryButton $active={reset} onClick={handleReset}>
+				<i className='fa-solid fa-reply'></i>
 			</PrimaryButton>
 		</Container>
 	);

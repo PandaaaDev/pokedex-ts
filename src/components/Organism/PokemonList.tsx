@@ -11,6 +11,9 @@ const StyledPokemonList = styled.div`
 	justify-content: center;
 	gap: 10px;
 	flex-wrap: wrap;
+	@media only screen and (max-width: 767px) {
+		padding-top: 20px;
+	}
 `;
 const PokemonList = () => {
 	const [currentUrl, setCurrentUrl] = useState<URLType>(
@@ -32,7 +35,7 @@ const PokemonList = () => {
 	}
 
 	return (
-		<div>
+		<>
 			<Pagination
 				nextLink={next ? true : false}
 				prevLink={prev ? true : false}
@@ -57,7 +60,7 @@ const PokemonList = () => {
 						})}
 				</StyledPokemonList>
 			)}
-		</div>
+		</>
 	);
 };
 export default PokemonList;

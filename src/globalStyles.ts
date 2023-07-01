@@ -1,32 +1,35 @@
 import { createGlobalStyle } from 'styled-components';
-import { themeType } from '@/types/main';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type themeProps = {
-	$darktheme: themeType;
-};
+
 const darkTheme = {
 	color: '#fff',
 	textColor: '',
-	backgroundColor: '#010214',
-	secondaryColor: 'grey',
+	backgroundColor: '#37434f',
+	mainAccentColor: '#d25044',
+	SecondaryAccentColor: '	#2c4c64',
 };
 const lightTheme = {
 	color: '#010214',
 	textColor: '',
-	backgroundColor: '#fff',
-	secondaryColor: 'grey',
+	backgroundColor: '#e3e8ec',
+	mainAccentColor: '#d25044',
+	SecondaryAccentColor: '	#2c4c64',
 };
 
-const GlobalStyle: React.FC<any> = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 *,*::after,*::before{
  margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
-body{
-	background-color: ${(props: themeProps) =>
-		props?.$darktheme ? darkTheme.backgroundColor : lightTheme.backgroundColor};
+html{
+	font-size: 62.5%;
 }
+body{
+	color: ${(props) => props.theme.color};
+	background-color: ${(props) => props.theme.backgroundColor};
+		font-family: 'Ubuntu Mono', monospace;
+}
+
 `;
 export { darkTheme, lightTheme };
 export default GlobalStyle;

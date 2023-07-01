@@ -4,9 +4,7 @@ type Props = {
 	children: ReactNode;
 };
 const StyledContainer = styled.div`
-	/* margin: 10px; */
-	padding: 20px 8%;
-	border: 1px solid red;
+	padding: 80px 8%;
 `;
 const Container: React.FC<Props> = (props) => {
 	return <StyledContainer {...props}>{props.children}</StyledContainer>;
