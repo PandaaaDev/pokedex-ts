@@ -17,7 +17,7 @@ const StyledNav = styled.nav`
 	grid-template-areas: 'logo list buttons';
 	background-color: ${(props) => props.theme.backgroundColor};
 	border-bottom: 2px solid ${(props) => props.theme.mainAccentColor};
-	z-index: 2;
+	z-index: 3;
 `;
 const ButtonsContainer = styled.div`
 	grid-area: buttons;

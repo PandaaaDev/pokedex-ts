@@ -5,6 +5,12 @@ const LogoContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	z-index: 2;
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+	}
 `;
 const LogoImg = styled.img`
 	width: 50px;
@@ -21,8 +27,10 @@ const LogoText = styled.div`
 const Logo = () => {
 	return (
 		<LogoContainer>
-			<LogoImg src='./pokeball.png' alt='pokeball' />
-			<LogoText>Pokedex</LogoText>
+			<a href='/home'>
+				<LogoImg src='./pokeball.png' alt='pokeball' />
+				<LogoText>Pokedex</LogoText>
+			</a>
 		</LogoContainer>
 	);
 };

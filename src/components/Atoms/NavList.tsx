@@ -21,6 +21,7 @@ const StyledNavList = styled.ul<{ $active: boolean }>`
 	padding-top: 80px;
 	/* right: -10000px; */
 	transition: 0.3s;
+	z-index: 2;
 	li {
 		display: flex;
 		align-items: flex-end;

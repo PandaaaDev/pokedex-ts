@@ -12,6 +12,7 @@ import Navigation from '@/components/Organism/Navigation';
 import { PokemonType } from '@/types/main';
 import { darkTheme, lightTheme } from '@/globalStyles';
 import Container from '@/components/Atoms/Container';
+import Footer from './components/Organism/Footer';
 const App = () => {
 	//Modal root
 	const root = document.getElementById('modal') as HTMLElement;
@@ -50,6 +51,7 @@ const App = () => {
 					{showModule && createPortal(<PokemonModal pokemon={pokemon} />, root)}
 					<PokemonList />
 				</Container>
+				<Footer />
 			</ThemeProvider>
 		</div>
 	);
