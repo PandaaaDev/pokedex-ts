@@ -9,7 +9,7 @@ type link = {
 type LinksArray = link[];
 
 const StyledNavList = styled.ul<{ $active: boolean }>`
-	position: absolute;
+	position: fixed;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
