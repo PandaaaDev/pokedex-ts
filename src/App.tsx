@@ -38,13 +38,6 @@ const App = () => {
 					$darkTheme: theme,
 				}}
 			/>
-			<button
-				onClick={() => {
-					dispatch(toggle());
-				}}
-			>
-				TestToggleDarkMode
-			</button>
 			{showModule && createPortal(<PokemonModal pokemon={pokemon} />, root)}
 			<PokemonList />
 		</div>
