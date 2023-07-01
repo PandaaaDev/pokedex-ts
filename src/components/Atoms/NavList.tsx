@@ -10,23 +10,49 @@ type LinksArray = link[];
 
 const StyledNavList = styled.ul<{ $active: boolean }>`
 	position: absolute;
-	width: ${(props) => (props.$active ? '100%' : ' 0%')};
-	height: 100%;
-	background-color: red;
-	/* right: -10000px; */
-	left: ${(props) => (props.$active ? '0px' : '-1000px')};
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	left: ${(props) => (props.$active ? '0px' : '-1000px')};
+	height: 100vh;
+	width: ${(props) => (props.$active ? '100%' : ' 0%')};
+	background-color: ${(props) => props.theme.backgroundColor};
+	padding-top: 80px;
+	/* right: -10000px; */
 	transition: 0.3s;
 	li {
-		list-style-type: none;
 		width: 100%;
+		margin: 10px;
+		font-size: 4rem;
+		list-style-type: none;
+		a {
+			position: relative;
+			text-decoration: none;
+			transition: 0.3s;
+			&::after,
+			&::focus {
+				content: '';
+				position: absolute;
+				width: 0;
+				transition: 0.3s;
+				transform: translate(-50%, -50%);
+			}
+			&:hover {
+				color: ${(props) => props.theme.mainAccentColor};
+				&::after,
+				&::focus {
+					bottom: -3px;
+					width: 100%;
+					left: 50%;
+					right: 50%;
+					height: 2px;
+					background-color: ${(props) => props.theme.mainAccentColor};
+				}
+			}
+		}
 	}
 	.navLink {
-		color: ${(props) => {
-			console.log(props);
-			return props.theme.color;
-		}};
+		color: ${(props) => props.theme.color};
 	}
 `;
 

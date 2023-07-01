@@ -6,6 +6,7 @@ interface NavLinkComponent {
 	className: string;
 	target?: string;
 	rel?: string;
+	routerLink?: boolean;
 }
 
 const StyledLink = styled.a``;
@@ -15,7 +16,11 @@ const NavLink: React.FC<NavLinkComponent> = ({
 	className,
 	target = '_blank',
 	rel = 'noopener',
+	routerLink,
 }) => {
+	if (routerLink) {
+		return <></>;
+	}
 	return (
 		<StyledLink href={href} className={className} target={target} rel={rel}>
 			{children}

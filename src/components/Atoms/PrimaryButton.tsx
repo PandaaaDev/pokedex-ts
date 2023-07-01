@@ -16,9 +16,10 @@ const StyledPrimaryButton = styled.button<PrimaryButtonType>`
 	opacity: ${(props) => (props.$active ? 1 : 0)};
 	cursor: pointer;
 	transition: 0.3s;
+	display: ${(props) => (props.$active ? 'block' : 'none')};
 	&:hover {
-		color: ${(props) => props.theme.secondaryColor};
-		border: 2px solid ${(props) => props.theme.secondaryColor};
+		color: ${(props) => props.theme.mainAccentColor};
+		border: 2px solid ${(props) => props.theme.mainAccentColor};
 	}
 `;
 

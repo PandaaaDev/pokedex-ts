@@ -4,7 +4,6 @@ const darkTheme = {
 	color: '#fff',
 	textColor: '',
 	backgroundColor: '#37434f',
-	secondaryColor: 'grey',
 	mainAccentColor: '#d25044',
 	SecondaryAccentColor: '	#2c4c64',
 };
@@ -12,7 +11,6 @@ const lightTheme = {
 	color: '#010214',
 	textColor: '',
 	backgroundColor: '#e3e8ec',
-	secondaryColor: 'grey',
 	mainAccentColor: '#d25044',
 	SecondaryAccentColor: '	#2c4c64',
 };

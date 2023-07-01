@@ -38,7 +38,7 @@ const App = () => {
 		} else {
 			dispatch(light());
 		}
-	}, [dispatch, showModule]);
+	}, [dispatch]);
 	// On initial useEffect ^
 
 	return (
@@ -46,8 +46,8 @@ const App = () => {
 			<ThemeProvider theme={theme ? darkTheme : lightTheme}>
 				<GlobalStyle />
 				<Navigation />
-				{showModule && createPortal(<PokemonModal pokemon={pokemon} />, root)}
 				<Container>
+					{showModule && createPortal(<PokemonModal pokemon={pokemon} />, root)}
 					<PokemonList />
 				</Container>
 			</ThemeProvider>

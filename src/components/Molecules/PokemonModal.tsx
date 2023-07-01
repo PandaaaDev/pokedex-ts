@@ -17,16 +17,16 @@ const PokemonModal: React.FC<{
 		width: 100%;
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
+		padding: 10% 0 0 0;
 	`;
 	const Content = styled.div`
 		border-radius: 25px;
-		background-color: #333;
+		background-color: ${(props) => props.theme.backgroundColor};
 		width: 90%;
-		height: 90%;
+		height: 85%;
+		
 	`;
-	const Outline = styled.div`
-		background-color: red;
-	`;
+
 	const dispatch = useDispatch();
 	const handleClose = (event: React.MouseEvent<HTMLElement>) => {
 		const target = event.target as HTMLButtonElement;
@@ -46,7 +46,6 @@ const PokemonModal: React.FC<{
 
 	return (
 		<Container>
-			<Outline id='outline' onClick={handleClose}></Outline>
 			<Content>
 				<button id='closeButton' onClick={handleClose}>
 					Close
