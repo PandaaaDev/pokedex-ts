@@ -1,9 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { themeType } from '@/types/main';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type themeProps = {
-	$darktheme: themeType;
-};
+
 const darkTheme = {
 	color: '#fff',
 	textColor: '',
@@ -31,14 +27,11 @@ html{
 	font-size: 62.5%;
 }
 body{
-	color: ${(props: themeProps) =>
-		props?.$darktheme.$darkTheme ? darkTheme.color : lightTheme.color};
-	background-color: ${(props: themeProps) =>
-		props?.$darktheme.$darkTheme
-			? darkTheme.backgroundColor
-			: lightTheme.backgroundColor};
+	color: ${(props) => props.theme.color};
+	background-color: ${(props) => props.theme.backgroundColor};
 		font-family: 'Ubuntu Mono', monospace;
 }
+
 `;
 export { darkTheme, lightTheme };
 export default GlobalStyle;

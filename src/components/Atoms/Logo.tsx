@@ -1,8 +1,4 @@
 import { styled } from 'styled-components';
-import { darkTheme, lightTheme } from '@/globalStyles.ts';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { selectorType } from '@/types/main';
-
 const LogoContainer = styled.div`
 	display: flex;
 	align-items: center;
@@ -16,16 +12,14 @@ const LogoImg = styled.img`
 `;
 const LogoText = styled.div`
 	font-size: 4rem;
-	color: ${(props) =>
-		props.theme.$darkMode ? darkTheme.color : lightTheme.color};
+	color: ${(props) => props.theme.color};
 `;
 
 const Logo = () => {
-	const theme = useSelector((state: selectorType) => state.theme.$darkTheme);
 	return (
 		<LogoContainer>
 			<LogoImg src='./pokeball.png' alt='pokeball' />
-			<LogoText theme={{ $darkMode: theme }}>Pokedex</LogoText>
+			<LogoText>Pokedex</LogoText>
 		</LogoContainer>
 	);
 };

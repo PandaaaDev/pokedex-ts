@@ -3,12 +3,9 @@ import { styled } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggle } from '@/store/themeReducer';
 import { selectorType } from '@/types/main';
-import {
-	FontAwesomeIcon,
-	FontAwesomeIconProps,
-} from '@fortawesome/react-fontawesome';
-import { darkTheme, lightTheme } from '@/globalStyles';
-const StyledThemeButton = styled.button``;
+const StyledThemeButton = styled.button`
+	max-width: 50px;
+`;
 const ThemeButton: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = () => {
 	const mode = useSelector((state: selectorType) => state.theme.$darkTheme);
 	const dispatch = useDispatch();

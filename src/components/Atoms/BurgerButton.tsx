@@ -5,6 +5,8 @@ type BurgerButtonType = {
 };
 const StyledBurger = styled.button`
 	grid-area: burger;
+	z-index: 2;
+	
 `;
 const BurgerButton: React.FC<BurgerButtonType> = (props) => {
 	return <StyledBurger {...props}>BurgerButton</StyledBurger>;
