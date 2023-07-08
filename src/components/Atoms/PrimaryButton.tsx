@@ -24,6 +24,7 @@ const StyledPrimaryButton = styled.button<PrimaryButtonType>`
 `;
 
 const PrimaryButton: React.FC<PrimaryButtonType> = (props) => {
+	
 	return <StyledPrimaryButton {...props}>{props.children}</StyledPrimaryButton>;
 };
 

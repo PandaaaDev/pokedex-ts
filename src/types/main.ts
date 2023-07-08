@@ -1,3 +1,4 @@
+import { InfiniteQueryObserverResult } from '@tanstack/react-query';
 import { ReactNode, ButtonHTMLAttributes } from 'react';
 export type PokemonType = {
 	name: string;
@@ -17,6 +18,11 @@ export type PokemonType = {
 	abilities?: [];
 	types?: [];
 	game_indices?: [];
+	loadMore?: {
+		load: boolean;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		function: () => Promise<InfiniteQueryObserverResult<any, unknown>>;
+	};
 };
 export type Species = {
 	name: string;

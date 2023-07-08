@@ -1,9 +1,11 @@
+import { useEffect, useRef } from 'react';
 import { PokemonType } from '@/types/main';
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { post } from '@/store/pokemonReducer';
 import { lightTheme } from '@/globalStyles';
+import { useIntersection } from '@mantine/hooks';
 
 const StyledPokemon = styled.div`
 	display: grid;
@@ -67,7 +69,18 @@ const StyledPokemon = styled.div`
 	}
 `;
 
-const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
+const Pokemon: React.FC<PokemonType> = ({ name, url, loadMore }) => {
+	const lastPostRef = useRef<HTMLElement>(null);
+	const { ref, entry } = useIntersection({
+		root: lastPostRef.current,
+		threshold: 1,
+	});
+	useEffect(() => {
+		if (entry?.isIntersecting) {
+			loadMore?.function();
+		}
+	}, [entry, loadMore]);
+
 	const dispatch = useDispatch();
 	const { data, loading, error } = useFetch(url);
 	const handleOnClick = () => {
@@ -82,7 +95,7 @@ const Pokemon: React.FC<PokemonType> = ({ name, url }) => {
 				<StyledPokemon>Loading...</StyledPokemon>
 			) : (
 				data && (
-					<StyledPokemon onClick={handleOnClick}>
+					<StyledPokemon ref={ref} onClick={handleOnClick}>
 						<div className='pokemonID'>ID: {data?.id}</div>
 						<div className='imageContainer'>
 							<img
