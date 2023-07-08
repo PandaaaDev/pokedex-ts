@@ -1,6 +1,6 @@
-
+import Page from '@/Templates/Page';
 const Login = () => {
-	return <div>Login</div>;
+	return <Page>Login</Page>;
 };
 
 export default Login;
