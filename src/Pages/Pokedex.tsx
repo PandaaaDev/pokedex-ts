@@ -17,6 +17,7 @@ const Pokedex = () => {
 	}) as unknown as boolean;
 	return (
 		<Page>
+			{showModule && createPortal(<PokemonModal pokemon={pokemon} />, root)}
 			<PokemonList />
 		</Page>
 	);

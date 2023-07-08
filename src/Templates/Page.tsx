@@ -9,11 +9,14 @@ import Navigation from '@/components/Organism/Navigation';
 import { darkTheme, lightTheme } from '@/globalStyles';
 import Container from '@/components/Atoms/Container';
 import Footer from '@/components/Organism/Footer';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type PageType = {
 	children: ReactNode;
 };
 const Page: React.FC<PageType> = ({ children }) => {
+	const queryClient = new QueryClient();
+
 	const dispatch = useDispatch();
 	// Redux Theme
 	const theme = useSelector((state: RootState) => state.theme.$darkTheme);
@@ -33,12 +36,14 @@ const Page: React.FC<PageType> = ({ children }) => {
 
 	return (
 		<>
-			<ThemeProvider theme={theme ? darkTheme : lightTheme}>
-				<GlobalStyle />
-				<Navigation />
-				<Container>{children}</Container>
-				<Footer />
-			</ThemeProvider>
+			<QueryClientProvider client={queryClient}>
+				<ThemeProvider theme={theme ? darkTheme : lightTheme}>
+					<GlobalStyle />
+					<Navigation />
+					<Container>{children}</Container>
+					<Footer />
+				</ThemeProvider>
+			</QueryClientProvider>
 		</>
 	);
 };
