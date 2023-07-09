@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import { PokemonType, URLType } from '@/types/main';
-import useFetch from '@/hooks/useFetch';
-import Pokemon from '@/components/Molecules/Pokemon';
-import Pagination from '@/components/Molecules/Pagination';
 import { styled } from 'styled-components';
+import axios from 'axios';
+import { PokemonType } from '@/types/main';
+import Pokemon from '@/components/Molecules/Pokemon';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 const StyledPokemonList = styled.div`
 	display: flex;
@@ -15,50 +14,64 @@ const StyledPokemonList = styled.div`
 		padding-top: 20px;
 	}
 `;
-const PokemonList = () => {
-	const [currentUrl, setCurrentUrl] = useState<URLType>(
-		'https://pokeapi.co/api/v2/pokemon'
-	);
-	const { data, loading, error, next, prev } = useFetch(currentUrl);
-	const handlePrev = () => {
-		setCurrentUrl(prev);
-	};
-	const handleNext = () => {
-		setCurrentUrl(next);
-	};
-	const handleReset = () => {
-		setCurrentUrl('https://pokeapi.co/api/v2/pokemon');
-	};
-	if (error) {
-		if (error.code == 'ERR_CANCELED') return;
-		console.error(error);
-	}
 
+const fetchPokemon = async ({ pageParam = 0 }) => {
+	const response = await axios.get(
+		`https://pokeapi.co/api/v2/pokemon?offset=${pageParam}&limit=20`
+	);
+	return response.data;
+};
+const PokemonList = () => {
+	const {
+		data,
+		fetchNextPage,
+		hasNextPage,
+		isFetchingNextPage,
+		isLoading,
+		isError,
+	} = useInfiniteQuery(['pokemonQuery'], fetchPokemon, {
+		getNextPageParam: (response) => {
+			const params = new URLSearchParams(response.next.split('?')[1]);
+			const offset = params.get('offset');
+			return offset;
+		},
+	});
+	const pokemons = data?.pages.flatMap((page) => {
+		return page.results;
+	});
+	if (isLoading) {
+		return <div> Loading... </div>;
+	}
+	if (isError) {
+		return (
+			<div>Error occured when fetching data please check you connection</div>
+		);
+	}
 	return (
 		<>
-			<Pagination
-				nextLink={next ? true : false}
-				prevLink={prev ? true : false}
-				reset={prev ? true : false}
-				handleNext={handleNext}
-				handlePrev={handlePrev}
-				handleReset={handleReset}
-			/>
-			{loading ? (
-				<div>Loading... </div>
-			) : (
-				<StyledPokemonList>
-					{data &&
-						data.results.map((element: PokemonType) => {
-							return (
+			<StyledPokemonList>
+				{pokemons?.map((pokemon: PokemonType, i: number) => {
+					if (i === pokemons?.length - 1) {
+						return (
+							<>
 								<Pokemon
-									key={element.name}
-									url={element.url}
-									name={element.name}
+									key={pokemon.name}
+									name={pokemon.name}
+									url={pokemon.url}
+									loadMore={{ load: true, function: fetchNextPage }}
 								/>
-							);
-						})}
-				</StyledPokemonList>
+							</>
+						);
+					}
+					return (
+						<Pokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+					);
+				})}
+			</StyledPokemonList>
+			{hasNextPage && (
+				<button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+					{isFetchingNextPage ? 'Loading more...' : 'Load More'}
+				</button>
 			)}
 		</>
 	);

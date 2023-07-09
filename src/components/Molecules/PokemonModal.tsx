@@ -18,13 +18,22 @@ const PokemonModal: React.FC<{
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
 		padding: 10% 0 0 0;
+		@media only screen and (min-width: 1000px) {
+			/* Styles for laptops and desktop screens */
+			/* Add your CSS rules here */
+			padding: 5% 0 0 0;
+		}
 	`;
 	const Content = styled.div`
 		border-radius: 25px;
 		background-color: ${(props) => props.theme.backgroundColor};
 		width: 90%;
 		height: 85%;
-		
+		@media only screen and (min-width: 768px) {
+			/* Styles for laptops and desktop screens */
+			/* Add your CSS rules here */
+			height: 95%;
+		}
 	`;
 
 	const dispatch = useDispatch();

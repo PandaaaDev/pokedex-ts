@@ -2,6 +2,8 @@ import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 // Style
 import { dark, light } from '@/store/themeReducer';
 import { RootState } from '@/store/rootReducer';
@@ -12,7 +14,9 @@ import Navigation from '@/components/Organism/Navigation';
 import { PokemonType } from '@/types/main';
 import { darkTheme, lightTheme } from '@/globalStyles';
 import Container from '@/components/Atoms/Container';
+import Footer from './components/Organism/Footer';
 const App = () => {
+	const queryClient = new QueryClient();
 	//Modal root
 	const root = document.getElementById('modal') as HTMLElement;
 	//Modal root ^
@@ -42,16 +46,20 @@ const App = () => {
 	// On initial useEffect ^
 
 	return (
-		<div>
-			<ThemeProvider theme={theme ? darkTheme : lightTheme}>
-				<GlobalStyle />
-				<Navigation />
-				<Container>
-					{showModule && createPortal(<PokemonModal pokemon={pokemon} />, root)}
-					<PokemonList />
-				</Container>
-			</ThemeProvider>
-		</div>
+		<>
+			<QueryClientProvider client={queryClient}>
+				<ThemeProvider theme={theme ? darkTheme : lightTheme}>
+					<GlobalStyle />
+					<Navigation />
+					<Container>
+						{showModule &&
+							createPortal(<PokemonModal pokemon={pokemon} />, root)}
+						<PokemonList />
+					</Container>
+					<Footer />
+				</ThemeProvider>
+			</QueryClientProvider>
+		</>
 	);
 };
 
