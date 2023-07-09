@@ -64,7 +64,7 @@ const Navigation = () => {
 				<Logo />
 				<ButtonsContainer>
 					<ThemeButton></ThemeButton>
-					<BurgerButton onClick={handleShowNav} showNav={showNav} />
+					<BurgerButton onClick={handleShowNav} shownav={showNav ? 1 : 0} />
 				</ButtonsContainer>
 			</StyledNav>
 			<NavList links={links} active={showNav} />

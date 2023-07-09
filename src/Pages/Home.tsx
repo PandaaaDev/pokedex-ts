@@ -3,7 +3,10 @@ import Page from '@/Templates/Page';
 const Home = () => {
 	return (
 		<Page>
-			<Link to={'pokedex'}>POKEDEX</Link>
+			<h1>Pokedex</h1>
+			<Link to='/pokedex'>See Pokemons</Link>
+			<Link to='/singin'>Sing in!</Link>
+			<Link to='/login'>Login</Link>
 		</Page>
 	);
 };

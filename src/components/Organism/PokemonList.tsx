@@ -48,32 +48,25 @@ const PokemonList = () => {
 		);
 	}
 	return (
-		<>
-			<StyledPokemonList>
-				{pokemons?.map((pokemon: PokemonType, i: number) => {
-					if (i === pokemons?.length - 1) {
-						return (
-							<>
-								<Pokemon
-									key={pokemon.name}
-									name={pokemon.name}
-									url={pokemon.url}
-									loadMore={{ load: true, function: fetchNextPage }}
-								/>
-							</>
-						);
-					}
+		<StyledPokemonList>
+			{pokemons?.map((pokemon: PokemonType, i: number) => {
+				if (i === pokemons?.length - 1) {
 					return (
-						<Pokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+						<>
+							<Pokemon
+								key={pokemon.name}
+								name={pokemon.name}
+								url={pokemon.url}
+								loadMore={{ load: true, function: fetchNextPage }}
+							/>
+						</>
 					);
-				})}
-			</StyledPokemonList>
-			{hasNextPage && (
-				<button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-					{isFetchingNextPage ? 'Loading more...' : 'Load More'}
-				</button>
-			)}
-		</>
+				}
+				return (
+					<Pokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+				);
+			})}
+		</StyledPokemonList>
 	);
 };
 export default PokemonList;
