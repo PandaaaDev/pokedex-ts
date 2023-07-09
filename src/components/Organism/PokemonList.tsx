@@ -22,22 +22,17 @@ const fetchPokemon = async ({ pageParam = 0 }) => {
 	return response.data;
 };
 const PokemonList = () => {
-	const {
-		data,
-		fetchNextPage,
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		hasNextPage,
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		isFetchingNextPage,
-		isLoading,
-		isError,
-	} = useInfiniteQuery(['pokemonQuery'], fetchPokemon, {
-		getNextPageParam: (response) => {
-			const params = new URLSearchParams(response.next.split('?')[1]);
-			const offset = params.get('offset');
-			return offset;
-		},
-	});
+	const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery(
+		['pokemonQuery'],
+		fetchPokemon,
+		{
+			getNextPageParam: (response) => {
+				const params = new URLSearchParams(response.next.split('?')[1]);
+				const offset = params.get('offset');
+				return offset;
+			},
+		}
+	);
 	const pokemons = data?.pages.flatMap((page) => {
 		return page.results;
 	});
