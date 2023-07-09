@@ -25,7 +25,9 @@ const PokemonList = () => {
 	const {
 		data,
 		fetchNextPage,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		hasNextPage,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		isFetchingNextPage,
 		isLoading,
 		isError,
