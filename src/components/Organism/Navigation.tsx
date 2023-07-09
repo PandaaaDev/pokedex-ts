@@ -1,6 +1,6 @@
 import BurgerButton from '../Atoms/BurgerButton';
 import Logo from '@/components/Atoms/Logo';
-import NavList from '@/components/Atoms/NavList';
+import NavList from '@/components/Molecules/NavList';
 import { useState } from 'react';
 import { styled } from 'styled-components';
 import ThemeButton from '../Atoms/ThemeButton';
@@ -44,9 +44,14 @@ const ButtonsContainer = styled.div`
 	}
 `;
 const links = [
-	{ label: 'Home', href: '', target: '' },
-	{ label: 'Pokedex', href: '', target: '' },
-	{ label: 'GitHub', href: '', target: '' },
+	{ label: 'Home', href: '/', target: '_self', routerLink: true },
+	{ label: 'Pokedex', href: '/pokedex', target: '_self', routerLink: true },
+	{
+		label: 'GitHub',
+		href: 'https://github.com/PandaaaDev',
+		target: '_blank',
+		routerLink: false,
+	},
 ];
 const Navigation = () => {
 	const [showNav, setShowNav] = useState(false);
@@ -59,7 +64,7 @@ const Navigation = () => {
 				<Logo />
 				<ButtonsContainer>
 					<ThemeButton></ThemeButton>
-					<BurgerButton onClick={handleShowNav} showNav={showNav} />
+					<BurgerButton onClick={handleShowNav} shownav={showNav ? 1 : 0} />
 				</ButtonsContainer>
 			</StyledNav>
 			<NavList links={links} active={showNav} />

@@ -1,12 +1,13 @@
 import React, { ReactNode } from 'react';
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 interface NavLinkComponent {
 	children: ReactNode;
 	href: string;
+	routerLink: boolean;
 	className: string;
-	target?: string;
+	target: string;
 	rel?: string;
-	routerLink?: boolean;
 }
 
 const StyledLink = styled.a``;
@@ -14,15 +15,19 @@ const NavLink: React.FC<NavLinkComponent> = ({
 	children,
 	href,
 	className,
-	target = '_blank',
-	rel = 'noopener',
+	target,
 	routerLink,
 }) => {
 	if (routerLink) {
-		return <></>;
+		return (
+			<Link to={href} className={className} target={target}>
+				{children}
+			</Link>
+		);
 	}
+
 	return (
-		<StyledLink href={href} className={className} target={target} rel={rel}>
+		<StyledLink href={href} className={className} target={target}>
 			{children}
 		</StyledLink>
 	);

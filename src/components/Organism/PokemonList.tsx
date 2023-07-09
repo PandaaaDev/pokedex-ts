@@ -22,20 +22,17 @@ const fetchPokemon = async ({ pageParam = 0 }) => {
 	return response.data;
 };
 const PokemonList = () => {
-	const {
-		data,
-		fetchNextPage,
-		hasNextPage,
-		isFetchingNextPage,
-		isLoading,
-		isError,
-	} = useInfiniteQuery(['pokemonQuery'], fetchPokemon, {
-		getNextPageParam: (response) => {
-			const params = new URLSearchParams(response.next.split('?')[1]);
-			const offset = params.get('offset');
-			return offset;
-		},
-	});
+	const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery(
+		['pokemonQuery'],
+		fetchPokemon,
+		{
+			getNextPageParam: (response) => {
+				const params = new URLSearchParams(response.next.split('?')[1]);
+				const offset = params.get('offset');
+				return offset;
+			},
+		}
+	);
 	const pokemons = data?.pages.flatMap((page) => {
 		return page.results;
 	});
@@ -48,32 +45,25 @@ const PokemonList = () => {
 		);
 	}
 	return (
-		<>
-			<StyledPokemonList>
-				{pokemons?.map((pokemon: PokemonType, i: number) => {
-					if (i === pokemons?.length - 1) {
-						return (
-							<>
-								<Pokemon
-									key={pokemon.name}
-									name={pokemon.name}
-									url={pokemon.url}
-									loadMore={{ load: true, function: fetchNextPage }}
-								/>
-							</>
-						);
-					}
+		<StyledPokemonList>
+			{pokemons?.map((pokemon: PokemonType, i: number) => {
+				if (i === pokemons?.length - 1) {
 					return (
-						<Pokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+						<>
+							<Pokemon
+								key={pokemon.name}
+								name={pokemon.name}
+								url={pokemon.url}
+								loadMore={{ load: true, function: fetchNextPage }}
+							/>
+						</>
 					);
-				})}
-			</StyledPokemonList>
-			{hasNextPage && (
-				<button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-					{isFetchingNextPage ? 'Loading more...' : 'Load More'}
-				</button>
-			)}
-		</>
+				}
+				return (
+					<Pokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+				);
+			})}
+		</StyledPokemonList>
 	);
 };
 export default PokemonList;

@@ -4,6 +4,7 @@ type link = {
 	label: string;
 	href: string;
 	target: string;
+	routerLink: boolean;
 	rel?: string;
 };
 type LinksArray = link[];
@@ -71,7 +72,12 @@ const NavList: React.FC<{ links: LinksArray; active: boolean }> = ({
 			{links.map((link) => {
 				return (
 					<li key={link.label}>
-						<NavLink href={link.href} className={'navLink'}>
+						<NavLink
+							href={link.href}
+							className={'navLink'}
+							routerLink={link.routerLink}
+							target={link.target}
+						>
 							{link.label}
 						</NavLink>
 					</li>

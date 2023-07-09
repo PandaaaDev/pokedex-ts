@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 const LogoContainer = styled.div`
 	grid-area: logo;
 	display: flex;
@@ -27,10 +28,10 @@ const LogoText = styled.div`
 const Logo = () => {
 	return (
 		<LogoContainer>
-			<a href='/home'>
+			<Link to='/'>
 				<LogoImg src='./pokeball.png' alt='pokeball' />
 				<LogoText>Pokedex</LogoText>
-			</a>
+			</Link>
 		</LogoContainer>
 	);
 };
