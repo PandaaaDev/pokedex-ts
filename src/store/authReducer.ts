@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+`import { createSlice } from '@reduxjs/toolkit';
 const initialState: Istate = { user: null, authToken: null };
 interface Istate {
 	user: string | null;
