@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Page from '@/Templates/Page';
 import { styled } from 'styled-components';
 const StyledContainet = styled.div`
 	display: flex;
@@ -18,6 +17,13 @@ const StyledContainet = styled.div`
 	img {
 		width: 100%;
 	}
+	@media (min-width: 1440px) {
+		margin-top: 4%;
+
+		img {
+			width: 50%;
+		}
+	}
 `;
 const LinkContainer = styled.div`
 	display: flex;
@@ -35,18 +41,16 @@ const LinkContainer = styled.div`
 `;
 const Home = () => {
 	return (
-		<Page>
-			<StyledContainet>
-				<h1>Wellcome to pokedex</h1>
-				<img src='./pikachu.png'></img>
-				<LinkContainer>
-					<Link to='/pokedex'>See Pokedex</Link>
-					<a target='_blank' href='https://github.com/PandaaaDev/pokedex-ts'>
-						See Repository
-					</a>
-				</LinkContainer>
-			</StyledContainet>
-		</Page>
+		<StyledContainet>
+			<h1>Wellcome to Pokedex</h1>
+			<img src='./pikachu.png'></img>
+			<LinkContainer>
+				<Link to='/pokedex'>See Pokedex</Link>
+				<a target='_blank' href='https://github.com/PandaaaDev/pokedex-ts'>
+					See Repository
+				</a>
+			</LinkContainer>
+		</StyledContainet>
 	);
 };
 

@@ -50,6 +50,8 @@ const ImageContainer = styled.div`
 	justify-content: center;
 	width: 100%;
 	height: 100%;
+	border-top: 2px solid ${(props) => props.theme.mainAccentColor};
+	border-bottom: 2px solid ${(props) => props.theme.mainAccentColor};
 	img {
 		width: 100%;
 	}
@@ -79,7 +81,7 @@ const PokemonDetail = styled.div`
 	width: 100%;
 	height: 100%;
 	font-size: 1.5rem;
-	padding: 0 1rem;
+	padding: 0.5rem 1rem;
 	ul {
 		list-style: none;
 		li {
@@ -103,17 +105,21 @@ const Header = styled.div`
 	grid-area: header;
 	width: 100%;
 	height: 100%;
-	.title {
-		grid-area: title;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 2rem;
-		color: ${(props) => props.theme.mainAccentColor};
-	}
+`;
+const Title = styled.div`
+	grid-area: title;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+	color: ${(props) => props.theme.color};
 `;
 const CloseButton = styled.button`
 	grid-area: close;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 12%;
 	border: none;
 	background-color: transparent;
 	color: ${(props) => props.theme.mainAccentColor};
@@ -126,7 +132,11 @@ const PokemonModal: React.FC<{
 	const handleClose = (event: React.MouseEvent<HTMLElement>) => {
 		const target = event.target as HTMLButtonElement;
 		event.preventDefault();
-		if (target.id === 'outline' || target.id === 'closeButton') {
+		if (
+			target.id === 'outline' ||
+			target.id === 'closeButton' ||
+			target.id === 'crossIcon'
+		) {
 			dispatch(hide());
 		}
 		event.stopPropagation();
@@ -145,11 +155,11 @@ const PokemonModal: React.FC<{
 			<Content>
 				<Header>
 					<CloseButton id='closeButton'>
-						<i className='fa-solid fa-x'></i>
+						<i id='crossIcon' className='fa-solid fa-x'></i>
 					</CloseButton>
-					<div className='title'>
+					<Title>
 						<h3>{capitalize(pokemon.name)}</h3>
-					</div>
+					</Title>
 				</Header>
 				<ImageContainer>
 					<img src={pokemon.sprites?.front_default}></img>

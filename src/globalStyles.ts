@@ -5,14 +5,14 @@ const darkTheme = {
 	textColor: '',
 	backgroundColor: '#37434f',
 	mainAccentColor: '#d25044',
-	SecondaryAccentColor: '	#2c4c64',
+	SecondaryAccentColor: '#2c4c64',
 };
 const lightTheme = {
 	color: '#010214',
 	textColor: '',
 	backgroundColor: '#e3e8ec',
 	mainAccentColor: '#d25044',
-	SecondaryAccentColor: '	#2c4c64',
+	SecondaryAccentColor: '#2c4c64',
 };
 
 const GlobalStyle = createGlobalStyle`

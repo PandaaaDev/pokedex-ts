@@ -6,12 +6,18 @@ import store from '@/store/store.ts';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from '@/Pages/Home.tsx';
 import Pokedex from '@/Pages/Pokedex';
+import Page from '@/Templates/Page';
+// import LoadingPage from './Pages/LoadingPage';
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Home></Home>,
+		element: <Page />,
+		// loader: <LoadingPage />,
+		children: [
+			{ path: '/', element: <Home /> },
+			{ path: 'pokedex', element: <Pokedex /> },
+		],
 	},
-	{ path: 'pokedex', element: <Pokedex /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

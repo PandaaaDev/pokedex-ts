@@ -1,4 +1,3 @@
-import Page from '@/Templates/Page';
 import { createPortal } from 'react-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/rootReducer';
@@ -16,10 +15,10 @@ const Pokedex = () => {
 		return state.pokemon.showPokemon;
 	}) as unknown as boolean;
 	return (
-		<Page>
+		<>
 			{showModule && createPortal(<PokemonModal pokemon={pokemon} />, root)}
 			<PokemonList />
-		</Page>
+		</>
 	);
 };
 
