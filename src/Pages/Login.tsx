@@ -30,7 +30,7 @@ const Login = () => {
 		formState: { errors },
 	} = useForm<IFormInput>();
 	return (
-		<Page>
+		<>
 			<form onSubmit={handleSubmit(submitHandler)}>
 				<label htmlFor='username'>Username:</label>
 				<input
@@ -53,7 +53,7 @@ const Login = () => {
 				{invalidData && <div>{message}</div>}
 				<button type='submit'>Login</button>
 			</form>
-		</Page>
+		</>
 	);
 };
 

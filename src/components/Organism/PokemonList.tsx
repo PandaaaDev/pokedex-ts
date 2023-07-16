@@ -25,8 +25,6 @@ const PokemonList = () => {
 	const {
 		data,
 		fetchNextPage,
-		hasNextPage,
-		isFetchingNextPage,
 		isLoading,
 		isError,
 	} = useInfiniteQuery(['pokemonQuery'], fetchPokemon, {
