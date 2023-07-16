@@ -7,6 +7,7 @@ interface NavLinkComponent {
 	routerLink: boolean;
 	className: string;
 	target: string;
+	onClick?: () => void;
 	rel?: string;
 }
 
@@ -17,17 +18,23 @@ const NavLink: React.FC<NavLinkComponent> = ({
 	className,
 	target,
 	routerLink,
+	onClick,
 }) => {
 	if (routerLink) {
 		return (
-			<Link to={href} className={className} target={target}>
+			<Link onClick={onClick} to={href} className={className} target={target}>
 				{children}
 			</Link>
 		);
 	}
 
 	return (
-		<StyledLink href={href} className={className} target={target}>
+		<StyledLink
+			onClick={onClick}
+			href={href}
+			className={className}
+			target={target}
+		>
 			{children}
 		</StyledLink>
 	);

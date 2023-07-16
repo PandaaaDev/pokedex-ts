@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store/rootReducer';
 import { PokemonType } from '@/types/main';
 import PokemonList from '@/components/Organism/PokemonList';
-import PokemonModal from '@/components/Molecules/PokemonModal';
+import PokemonModal from '@/components/Organism/PokemonModal';
 
 const Pokedex = () => {
 	const root = document.getElementById('modal') as HTMLElement;

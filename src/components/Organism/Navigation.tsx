@@ -58,6 +58,9 @@ const Navigation = () => {
 	const handleShowNav = () => {
 		setShowNav(!showNav);
 	};
+	const handleHideNav = () => {
+		setShowNav(false);
+	};
 	return (
 		<>
 			<StyledNav>
@@ -67,7 +70,7 @@ const Navigation = () => {
 					<BurgerButton onClick={handleShowNav} shownav={showNav ? 1 : 0} />
 				</ButtonsContainer>
 			</StyledNav>
-			<NavList links={links} active={showNav} />
+			<NavList links={links} active={showNav} handleHideNav={handleHideNav} />
 		</>
 	);
 };
