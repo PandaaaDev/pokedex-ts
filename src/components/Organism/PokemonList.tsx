@@ -22,18 +22,18 @@ const fetchPokemon = async ({ pageParam = 0 }) => {
 	return response.data;
 };
 const PokemonList = () => {
-	const {
-		data,
-		fetchNextPage,
-		isLoading,
-		isError,
-	} = useInfiniteQuery(['pokemonQuery'], fetchPokemon, {
-		getNextPageParam: (response) => {
-			const params = new URLSearchParams(response.next.split('?')[1]);
-			const offset = params.get('offset');
-			return offset;
-		},
-	});
+
+	const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery(
+		['pokemonQuery'],
+		fetchPokemon,
+		{
+			getNextPageParam: (response) => {
+				const params = new URLSearchParams(response.next.split('?')[1]);
+				const offset = params.get('offset');
+				return offset;
+			},
+		}
+	);
 	const pokemons = data?.pages.flatMap((page) => {
 		return page.results;
 	});
