@@ -63,3 +63,12 @@ export interface SyntheticEvent<T> {
 export interface Button extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 }
+type pokeApiSchema = {
+	name: string;
+	url: string;
+};
+export type TList<T> = { data: T[] };
+
+export type TAbility = { ability: pokeApiSchema };
+export type TStats = { base_stat: number; stat: pokeApiSchema };
+export type TTypes = { slot: number; type: pokeApiSchema };

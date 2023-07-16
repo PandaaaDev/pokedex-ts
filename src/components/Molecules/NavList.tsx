@@ -63,10 +63,11 @@ const StyledNavList = styled.ul<{ $active: boolean }>`
 	}
 `;
 
-const NavList: React.FC<{ links: LinksArray; active: boolean }> = ({
-	links,
-	active,
-}) => {
+const NavList: React.FC<{
+	links: LinksArray;
+	active: boolean;
+	handleHideNav: () => void;
+}> = ({ links, active, handleHideNav }) => {
 	return (
 		<StyledNavList $active={active}>
 			{links.map((link) => {
@@ -77,6 +78,9 @@ const NavList: React.FC<{ links: LinksArray; active: boolean }> = ({
 							className={'navLink'}
 							routerLink={link.routerLink}
 							target={link.target}
+							onClick={() => {
+								handleHideNav();
+							}}
 						>
 							{link.label}
 						</NavLink>

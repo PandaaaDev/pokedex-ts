@@ -22,6 +22,7 @@ const fetchPokemon = async ({ pageParam = 0 }) => {
 	return response.data;
 };
 const PokemonList = () => {
+
 	const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery(
 		['pokemonQuery'],
 		fetchPokemon,

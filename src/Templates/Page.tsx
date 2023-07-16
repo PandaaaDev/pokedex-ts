@@ -1,20 +1,17 @@
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
-// Style
-import { dark, light } from '@/store/themeReducer';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Outlet } from 'react-router-dom';
 import { RootState } from '@/store/rootReducer';
-import GlobalStyle from '@/globalStyles';
-import Navigation from '@/components/Organism/Navigation';
+import { ThemeProvider } from 'styled-components';
+import { dark, light } from '@/store/themeReducer';
 import { darkTheme, lightTheme } from '@/globalStyles';
+import Navigation from '@/components/Organism/Navigation';
 import Container from '@/components/Atoms/Container';
 import Footer from '@/components/Organism/Footer';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import GlobalStyle from '@/globalStyles';
 
-type PageType = {
-	children: ReactNode;
-};
-const Page: React.FC<PageType> = ({ children }) => {
+const Page = () => {
 	const queryClient = new QueryClient();
 
 	const dispatch = useDispatch();
@@ -40,7 +37,9 @@ const Page: React.FC<PageType> = ({ children }) => {
 				<ThemeProvider theme={theme ? darkTheme : lightTheme}>
 					<GlobalStyle />
 					<Navigation />
-					<Container>{children}</Container>
+					<Container>
+						<Outlet />
+					</Container>
 					<Footer />
 				</ThemeProvider>
 			</QueryClientProvider>

@@ -1,9 +1,9 @@
-import BurgerButton from '../Atoms/BurgerButton';
-import Logo from '@/components/Atoms/Logo';
-import NavList from '@/components/Molecules/NavList';
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import ThemeButton from '../Atoms/ThemeButton';
+import BurgerButton from '@/components/Atoms/BurgerButton';
+import Logo from '@/components/Atoms/Logo';
+import NavList from '@/components/Molecules/NavList';
+import ThemeButton from '@/components/Atoms/ThemeButton';
 const StyledNav = styled.nav`
 	position: fixed;
 	width: 100%;
@@ -58,6 +58,9 @@ const Navigation = () => {
 	const handleShowNav = () => {
 		setShowNav(!showNav);
 	};
+	const handleHideNav = () => {
+		setShowNav(false);
+	};
 	return (
 		<>
 			<StyledNav>
@@ -67,7 +70,7 @@ const Navigation = () => {
 					<BurgerButton onClick={handleShowNav} shownav={showNav ? 1 : 0} />
 				</ButtonsContainer>
 			</StyledNav>
-			<NavList links={links} active={showNav} />
+			<NavList links={links} active={showNav} handleHideNav={handleHideNav} />
 		</>
 	);
 };
