@@ -1,4 +1,3 @@
-import Page from '@/Templates/Page';
 import axios from 'axios';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
