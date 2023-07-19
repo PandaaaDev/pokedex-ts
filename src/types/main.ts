@@ -30,6 +30,10 @@ export type Species = {
 };
 export type Sprites = {
 	front_default: string;
+	other: {
+		dream_world: { front_default: string };
+		'officail-artwork': { front_default: string };
+	};
 };
 
 export type URLType = string | null | undefined | URL;

@@ -14,6 +14,13 @@ const StyledPokemonList = styled.div`
 		padding-top: 20px;
 	}
 `;
+const StyledLoading = styled.div`
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 3rem;
+`;
 
 const fetchPokemon = async ({ pageParam = 0 }) => {
 	const response = await axios.get(
@@ -22,7 +29,10 @@ const fetchPokemon = async ({ pageParam = 0 }) => {
 	return response.data;
 };
 const PokemonList = () => {
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery(
 		['pokemonQuery'],
 		fetchPokemon,
@@ -38,7 +48,7 @@ const PokemonList = () => {
 		return page.results;
 	});
 	if (isLoading) {
-		return <div> Loading... </div>;
+		return <StyledLoading> Loading... </StyledLoading>;
 	}
 	if (isError) {
 		return (

@@ -42,7 +42,7 @@ const LinkContainer = styled.div`
 const Home = () => {
 	return (
 		<StyledContainet>
-			<h1>Wellcome to Pokedex</h1>
+			<h1>Welcome to Pokedex</h1>
 			<img src='./pikachu.png'></img>
 			<LinkContainer>
 				<Link to='/pokedex'>See Pokedex</Link>

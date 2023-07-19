@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { post } from '@/store/pokemonReducer';
 import { lightTheme } from '@/globalStyles';
 import { useIntersection } from '@mantine/hooks';
+import { capitalize } from '@/utils/capitalize';
 
 const StyledPokemon = styled.div`
 	display: grid;
@@ -99,21 +100,15 @@ const Pokemon: React.FC<PokemonType> = ({ name, url, loadMore }) => {
 						<div className='pokemonID'>ID: {data?.id}</div>
 						<div className='imageContainer'>
 							<img
-								src={data?.sprites?.front_default}
+								src={data?.sprites?.other.dream_world.front_default}
 								alt={`Image of ${name}`}
 							></img>
 						</div>
 						<div className='pokemonType'>
 							<p>Type:</p>
-							{data.types.map(
-								(e: { slot: number; type: { name: string; url: string } }) => {
-									return <p key={e.type.url}>{e.type.name}</p>;
-								}
-							)}
+							{capitalize(data?.types[0].type.name)}
 						</div>
-						<div className='pokemonName'>
-							{name.charAt(0).toUpperCase() + name.slice(1)}
-						</div>
+						<div className='pokemonName'>{capitalize(name)}</div>
 					</StyledPokemon>
 				)
 			)}

@@ -19,6 +19,7 @@ const Container = styled.div`
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	padding: 10% 0 0 0;
+	margin-top: 6%;
 	@media only screen and (min-width: 1000px) {
 		padding: 5% 0 0 0;
 	}
@@ -27,7 +28,7 @@ const Content = styled.div`
 	display: grid;
 	grid-auto-columns: 1fr;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 0.3fr 1fr 0.5fr 0.2fr;
+	grid-template-rows: 0.3fr 1fr 0.5fr 0.5fr;
 	gap: 0px 0px;
 	grid-template-areas:
 		'header header'
@@ -53,7 +54,7 @@ const ImageContainer = styled.div`
 	border-top: 2px solid ${(props) => props.theme.mainAccentColor};
 	border-bottom: 2px solid ${(props) => props.theme.mainAccentColor};
 	img {
-		width: 100%;
+		width: 50%;
 	}
 	@media only screen and (min-width: 768px) {
 		img {
@@ -96,7 +97,7 @@ const PokemonDetail = styled.div`
 const Header = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-rows: 0.5fr 0fr 0fr;
 	gap: 0px 0px;
 	grid-template-areas:
 		'. . close'
@@ -119,7 +120,7 @@ const CloseButton = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	padding-right: 12%;
+	padding: 15% 15% 0 0;
 	border: none;
 	background-color: transparent;
 	color: ${(props) => props.theme.mainAccentColor};
@@ -162,7 +163,7 @@ const PokemonModal: React.FC<{
 					</Title>
 				</Header>
 				<ImageContainer>
-					<img src={pokemon.sprites?.front_default}></img>
+					<img src={pokemon.sprites?.other.dream_world.front_default}></img>
 				</ImageContainer>
 				<PokemonDetail>
 					{pokemon.stats && <Stats data={pokemon.stats}></Stats>}
