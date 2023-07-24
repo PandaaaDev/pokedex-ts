@@ -23,9 +23,8 @@ const StyledPrimaryButton = styled.button<PrimaryButtonType>`
 	}
 `;
 
-const PrimaryButton: React.FC<PrimaryButtonType> = (props) => {
-	
-	return <StyledPrimaryButton {...props}>{props.children}</StyledPrimaryButton>;
+const PrimaryButton: React.FC<PrimaryButtonType> = ({ children, ...rest }) => {
+	return <StyledPrimaryButton {...rest}>{children}</StyledPrimaryButton>;
 };
 
 export default PrimaryButton;

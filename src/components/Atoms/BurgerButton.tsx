@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import { styled } from 'styled-components';
-type BurgerButtonType = {
+interface BurgerButtonType extends HTMLAttributes<HTMLButtonElement> {
 	onClick: () => void;
 	shownav: number;
-};
+}
 const StyledBurger = styled.button`
 	grid-area: burger;
 	z-index: 2;
