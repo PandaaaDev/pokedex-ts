@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import axios from 'axios';
 import { PokemonType } from '@/types/main';
-import Pokemon from '@/components/Molecules/Pokemon';
+import Pokemon from '@/components/molecules/Pokemon';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 const StyledPokemonList = styled.div`
@@ -14,8 +14,15 @@ const StyledPokemonList = styled.div`
 		padding-top: 20px;
 	}
 `;
+const StyledErrorDiv = styled.div`
+	height: 75vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 3rem;
+`;
 const StyledLoading = styled.div`
-	height: 100vh;
+	height: 75vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -47,9 +54,7 @@ const PokemonList = () => {
 		return <StyledLoading> Loading... </StyledLoading>;
 	}
 	if (isError) {
-		return (
-			<div>Error occured when fetching data please check you connection</div>
-		);
+		return <StyledErrorDiv>{JSON.stringify(data)}</StyledErrorDiv>;
 	}
 	return (
 		<StyledPokemonList>

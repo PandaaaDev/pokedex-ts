@@ -1,5 +1,5 @@
 import React from 'react';
-import { capitalize } from '@/utils/capitalize';
+import { capitalize } from '@/utils/capitalize/capitalize';
 import { TList, TAbility } from '@/types/main';
 import { styled } from 'styled-components';
 const Container = styled.div`

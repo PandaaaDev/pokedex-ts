@@ -2,8 +2,8 @@ import { createPortal } from 'react-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/rootReducer';
 import { PokemonType } from '@/types/main';
-import PokemonList from '@/components/Organism/PokemonList';
-import PokemonModal from '@/components/Organism/PokemonModal';
+import PokemonList from '@/components/organism/PokemonList';
+import PokemonModal from '@/components/organism/PokemonModal';
 
 const Pokedex = () => {
 	const root = document.getElementById('modal') as HTMLElement;

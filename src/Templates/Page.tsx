@@ -6,9 +6,9 @@ import { RootState } from '@/store/rootReducer';
 import { ThemeProvider } from 'styled-components';
 import { dark, light } from '@/store/themeReducer';
 import { darkTheme, lightTheme } from '@/globalStyles';
-import Navigation from '@/components/Organism/Navigation';
-import Container from '@/components/Atoms/Container';
-import Footer from '@/components/Organism/Footer';
+import Navigation from '@/components/organism/Navigation';
+import Container from '@/components/atoms/Container';
+import Footer from '@/components/organism/Footer';
 import GlobalStyle from '@/globalStyles';
 
 const Page = () => {

@@ -3,6 +3,8 @@ const StyledFooter = styled.footer`
 	background-color: ${(props) => props.theme.mainAccentColor};
 	color: ${(props) => props.theme.color};
 	padding: 1rem 0;
+	bottom: 0;
+	width: 100%;
 `;
 const LinkContainer = styled.ul`
 	display: flex;

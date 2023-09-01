@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from '@/store/store.ts';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from '@/Pages/Home.tsx';
-import Pokedex from '@/Pages/Pokedex';
-import Page from '@/Templates/Page';
+import Home from '@/pages/Home.tsx';
+import Pokedex from '@/pages/Pokedex';
+import Page from '@/templates/Page';
 // import LoadingPage from './Pages/LoadingPage';
 const router = createBrowserRouter([
 	{

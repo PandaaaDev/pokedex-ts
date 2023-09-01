@@ -1,6 +1,6 @@
 import React from 'react';
 import { TTypes, TList } from '@/types/main';
-import { capitalize } from '@/utils/capitalize';
+import { capitalize } from '@/utils/capitalize/capitalize';
 import { styled } from 'styled-components';
 const Container = styled.div`
 	grid-area: type;

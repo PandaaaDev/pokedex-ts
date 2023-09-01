@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import BurgerButton from '@/components/Atoms/BurgerButton';
-import Logo from '@/components/Atoms/Logo';
-import NavList from '@/components/Molecules/NavList';
-import ThemeButton from '@/components/Atoms/ThemeButton';
+import BurgerButton from '@/components/atoms/BurgerButton';
+import Logo from '@/components/atoms/Logo';
+import NavList from '@/components/molecules/NavList';
+import ThemeButton from '@/components/atoms/ThemeButton';
 const StyledNav = styled.nav`
 	position: fixed;
 	width: 100%;

@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import NavLink from '@/components/Atoms/NavLink';
+import NavLink from '@/components/atoms/NavLink';
 type link = {
 	label: string;
 	href: string;

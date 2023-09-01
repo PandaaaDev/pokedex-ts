@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { post } from '@/store/pokemonReducer';
 import { lightTheme } from '@/globalStyles';
 import { useIntersection } from '@mantine/hooks';
-import { capitalize } from '@/utils/capitalize';
+import { capitalize } from '@/utils/capitalize/capitalize';
 
 const StyledPokemon = styled.div`
 	display: grid;

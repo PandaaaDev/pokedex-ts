@@ -3,10 +3,10 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { hide } from '@/store/pokemonReducer';
-import Abilities from '@/components/Molecules/Abilities';
-import Stats from '@/components/Molecules/Stats';
-import Types from '@/components/Molecules/Types';
-import { capitalize } from '@/utils/capitalize';
+import Abilities from '@/components/molecules/Abilities';
+import Stats from '@/components/molecules/Stats';
+import Types from '@/components/molecules/Types';
+import { capitalize } from '@/utils/capitalize/capitalize';
 const Container = styled.div`
 	position: fixed;
 	top: 50%;
@@ -125,7 +125,9 @@ const CloseButton = styled.button`
 	background-color: transparent;
 	color: ${(props) => props.theme.mainAccentColor};
 	font-size: 2rem;
+	cursor: pointer;
 `;
+
 const PokemonModal: React.FC<{
 	pokemon: PokemonType;
 }> = ({ pokemon }) => {
